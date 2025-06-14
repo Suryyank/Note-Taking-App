@@ -1,0 +1,72 @@
+@import "../../App.scss";
+@import "../../assets/mixin";
+
+.app-sidebar{
+    width: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #B1C29E;
+    transition: all 600ms ease-in-out;
+    height: 100vh;
+    @media screen and (min-width: 992px){
+        width: 300px;
+    }
+
+    .app-brand{
+        padding-right : 180px;
+        img{
+            width: 40px;
+            padding-bottom: 20px;
+        }
+        border-bottom: 1px solid #131010;
+    }
+
+    .icon-text{
+        display: none;
+        font-size: 16px;
+        font-weight: 300;
+        @media screen and (min-width: 992px){
+            display: block;
+            margin-left: 6px;
+        }
+    }
+
+    .links{
+        .link-item{
+            
+            height: 39px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            //transition: $transition;
+            transition: 0.8s ease, transform 0.5s ease; 
+            
+
+            &.active-link{
+                
+                background-color: $clr-red-salsa;
+                @include linear-gradient(right, (#4A2AB4, #191654));
+                
+                //background: linear-gradient(to right,  #191654,#43c6ac);
+
+            }
+            
+
+            &:hover{
+                //box-shadow: 0 0 10px rgba(67, 198, 172, 0.4);
+                transform: scale(1.1);
+                
+            }
+
+            @media screen and (min-width: 992px){
+                justify-content: flex-start;
+                padding-left: 16px;
+
+                .icon{
+                    width: 28px;
+                }
+            }
+        }
+    }
+}

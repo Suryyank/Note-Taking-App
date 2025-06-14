@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+// Define allowed directions
+$map-for-directions: (
+  top: to top,
+  bottom: to bottom,
+  left: to left,
+  right: to right,
+  to-top-right: to top right,
+  to-bottom-right: to bottom right,
+  to-top-left: to top left,
+  to-bottom-left: to bottom left
+);
+
+@mixin linear-gradient($direction, $colors) {
+  $list: ();
+  @for $i from 1 through length($colors) {
+    $list: append($list, nth($colors, $i), comma);
+  }
+
+  @if map-has-key($map-for-directions, $direction) {
+    background: linear-gradient(map-get($map-for-directions, $direction), $list);
+  } @else if str-index($direction, "deg") {
+    background: linear-gradient($direction, $list);
+  } @else {
+    @error "'#{$direction}' is an invalid direction. Use a valid keyword (e.g., 'right') or degree (e.g., '45deg').";
+  }
+}
